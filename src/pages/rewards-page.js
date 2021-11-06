@@ -1,41 +1,35 @@
-import { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import axios from "axios";
+import { useApi } from "hooks/useApi";
 import Layout from "components/layout";
 
-const BASE_URL = "https://localhost:5000";
+function DataFetcher() {
+  const opts = { audience: "https://huntgallen.heroku.app" };
+  const { loginWithRedirect, getAccessTokenWithPopup } = useAuth0();
+  const { loading, error, refresh, data } = useApi("https://localhost:5000/History", opts);
+  const getTokenAndTryAgain = async () => {
+    await getAccessTokenWithPopup(opts);
+    refresh();
+  };
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  if (error) {
+    if (error.error === "login_required") {
+      return <button onClick={() => loginWithRedirect(opts)}>Login</button>;
+    }
+    if (error.error === "consent_required") {
+      return <button onClick={getTokenAndTryAgain}>Consent to reading users</button>;
+    }
+    return <div>Oops {error.message}</div>;
+  }
+
+  return <ul>{JSON.stringify(data)}</ul>;
+}
 
 export default function RewardsPage() {
-  const [history, setHistory] = useState([]);
-  const { getAccessTokenSilently } = useAuth0();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const token = await getAccessTokenSilently();
-
-      const config = {
-        headers: { Authorization: `Bearer ${token}` },
-      };
-
-      axios
-        .get(`${BASE_URL}/History`, config)
-        .then((response) => {
-          setHistory(response.data);
-        })
-        .catch((error) => console.log(error));
-    };
-
-    fetchData();
-  }, []);
-
-  const historyList = history?.map((entry) => {
-    return <p>{entry.qr.description}</p>;
-  });
-
   return (
     <Layout>
-      <h1>Rewards</h1>
-      {historyList}
+      <DataFetcher />
     </Layout>
   );
 }
