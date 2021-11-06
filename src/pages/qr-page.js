@@ -4,7 +4,7 @@ import Stack from "@mui/material/Stack";
 import { useAuth0 } from "@auth0/auth0-react";
 import Layout from "components/layout";
 import axios from "axios";
-import { Typography } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 
 export default function QRPage() {
   const [scanResult, setScanresult] = useState();
@@ -50,7 +50,9 @@ export default function QRPage() {
     <Layout>
       <Stack>
         <QrReader delay={300} onError={handleError} onScan={handleScan} style={{ width: "100%", maxWidth: "500px" }} />
-        <Typography variant="h6">{scanResult}</Typography>
+        <Box sx={{ display: "flex", justifyContent: "center", marginTop: 5 }}>
+          <Typography variant="h6">{scanResult}</Typography>
+        </Box>
       </Stack>
     </Layout>
   );
