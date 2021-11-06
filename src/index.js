@@ -10,6 +10,8 @@ import Auth0ProviderWithHistory from "auth/auth0-provider-with-history";
 
 import QRPage from "pages/qr-page";
 import RewardsPage from "pages/rewards-page";
+import MapPage from "pages/map-page";
+import HistoryPage from "pages/history-page";
 
 function App() {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
@@ -21,6 +23,8 @@ function App() {
         <Route path="/" element={<QRPage />} />
         <Route path="/scan" element={<QRPage />} />
         <Route path="/rewards" element={<RewardsPage />} />
+        <Route path="/hisotry" element={<HistoryPage />} />
+        <Route path="/map" element={<MapPage />} />
       </Routes>
     </ThemeProvider>
   );

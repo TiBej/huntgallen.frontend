@@ -1,5 +1,6 @@
 import { useState } from "react";
 import QrReader from "react-qr-reader";
+import Stack from "@mui/material/Stack";
 import Layout from "components/layout";
 
 export default function QRPage() {
@@ -15,8 +16,10 @@ export default function QRPage() {
 
   return (
     <Layout>
-      <QrReader delay={300} onError={handleError} onScan={handleScan} style={{ width: "100%" }} />
-      <p>{result}</p>
+      <Stack>
+        <QrReader delay={300} onError={handleError} onScan={handleScan} style={{ width: "100%" }} />
+        <p>{result}</p>
+      </Stack>
     </Layout>
   );
 }

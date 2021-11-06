@@ -29,7 +29,8 @@ function DataFetcher() {
 export default function RewardsPage() {
   return (
     <Layout>
-      <DataFetcher />
+      <p>Hii</p>
+      {/* <DataFetcher /> */}
     </Layout>
   );
 }
