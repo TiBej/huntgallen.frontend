@@ -4,7 +4,7 @@ import { red } from "@mui/material/colors";
 const commonProperties = {
   palette: {
     primary: {
-      main: "#f5c344",
+      main: "#3f8f3e",
     },
     secondary: {
       main: "#19857b",

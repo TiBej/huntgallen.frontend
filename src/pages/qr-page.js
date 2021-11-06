@@ -4,6 +4,7 @@ import Stack from "@mui/material/Stack";
 import { useAuth0 } from "@auth0/auth0-react";
 import Layout from "components/layout";
 import axios from "axios";
+import { Typography } from "@mui/material";
 
 export default function QRPage() {
   const [scanResult, setScanresult] = useState();
@@ -25,12 +26,14 @@ export default function QRPage() {
       headers: { Authorization: `Bearer ${token}` },
     };
 
-    console.log(qrCode, "Hiiiii");
-
     axios
       .put("https://localhost:5001/History?qrcode=" + qrCode, {}, config)
-      .then((result) => console.log(result))
-      .catch((error) => console.log(error));
+      .then((result) => {
+        setScanresult("Success!");
+      })
+      .catch((error) => {
+        setScanresult("Unable to validate code");
+      });
   };
 
   useEffect(() => {
@@ -47,7 +50,7 @@ export default function QRPage() {
     <Layout>
       <Stack>
         <QrReader delay={300} onError={handleError} onScan={handleScan} style={{ width: "100%", maxWidth: "500px" }} />
-        <p>{scanResult}</p>
+        <Typography variant="h6">{scanResult}</Typography>
       </Stack>
     </Layout>
   );

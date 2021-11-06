@@ -6,6 +6,7 @@ export default function LoginButton() {
 
   return (
     <Button
+      variant="secondary"
       onClick={() =>
         logout({
           returnTo: window.location.origin,
