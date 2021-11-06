@@ -23,8 +23,9 @@ function App() {
         <Route path="/" element={<QRPage />} />
         <Route path="/scan" element={<QRPage />} />
         <Route path="/rewards" element={<RewardsPage />} />
-        <Route path="/hisotry" element={<HistoryPage />} />
+        <Route path="/history" element={<HistoryPage />} />
         <Route path="/map" element={<MapPage />} />
+        <Route path="*" element={<p>Unknown page</p>} />
       </Routes>
     </ThemeProvider>
   );

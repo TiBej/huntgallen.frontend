@@ -38,7 +38,7 @@ export default function Layout({ children }) {
               value="/history"
               label="History"
               icon={<HistoryIcon />}
-              to="/hisotry"
+              to="/history"
               component={Link}
             />
             <BottomNavigationAction
