@@ -1,17 +1,31 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Auth0Provider } from "@auth0/auth0-react";
-import App from "./App";
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Auth0ProviderWithHistory from "./auth/auth0-provider-with-history";
+
+import QRPage from "pages/qr-page";
+import RewardsPage from "pages/rewards-page";
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<QRPage />} />
+      <Route path="/scan" element={<QRPage />} />
+      <Route path="/rewards" element={<RewardsPage />} />
+    </Routes>
+  );
+}
 
 ReactDOM.render(
   <React.StrictMode>
-    <Auth0Provider
-      domain={process.env.AUTH0_DOMAIN}
-      clientId={process.env.AUTH0_CLIENT_ID}
-      redirectUri={window.location.origin}
-    >
-      <App />
-    </Auth0Provider>
+    <BrowserRouter>
+      <Auth0ProviderWithHistory>
+        <App />
+      </Auth0ProviderWithHistory>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );
+
+serviceWorkerRegistration.register();
