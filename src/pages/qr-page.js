@@ -29,6 +29,7 @@ export default function QRPage() {
     axios
       .put("https://localhost:5001/History?qrcode=" + qrCode, {}, config)
       .then((result) => {
+        // TODO: Add modal
         setScanresult("Success!");
       })
       .catch((error) => {
@@ -49,9 +50,16 @@ export default function QRPage() {
   return (
     <Layout>
       <Stack>
-        <QrReader delay={300} onError={handleError} onScan={handleScan} style={{ width: "100%", maxWidth: "500px" }} />
         <Box sx={{ display: "flex", justifyContent: "center", marginTop: 5 }}>
-          <Typography variant="h6">{scanResult}</Typography>
+          <QrReader
+            delay={300}
+            onError={handleError}
+            onScan={handleScan}
+            style={{ width: "100%", maxWidth: "500px" }}
+          />
+          <Typography variant="h6" sx={{ marginTop: 5 }}>
+            {scanResult}
+          </Typography>
         </Box>
       </Stack>
     </Layout>

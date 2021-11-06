@@ -7,6 +7,8 @@ import { lightTheme, darkTheme } from "theme";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Auth0ProviderWithHistory from "auth/auth0-provider-with-history";
+import "mapbox-gl/dist/mapbox-gl.css";
+import "./index.css";
 
 import QRPage from "pages/qr-page";
 import RewardsPage from "pages/rewards-page";
