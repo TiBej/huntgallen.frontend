@@ -28,7 +28,7 @@ export default function QRPage() {
     console.log(qrCode, "Hiiiii");
 
     axios
-      .put("https://localhost:5001/History", { qrcode: qrCode }, config)
+      .put("https://localhost:5001/History?qrcode=" + qrCode, {}, config)
       .then((result) => console.log(result))
       .catch((error) => console.log(error));
   };
