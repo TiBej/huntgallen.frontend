@@ -4,6 +4,7 @@ import Layout from "components/layout";
 import { useAuth0 } from "@auth0/auth0-react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
+import Button from "@mui/material/Button";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
@@ -50,7 +51,14 @@ function HistoryList() {
     );
   });
 
-  return <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>{items}</List>;
+  return (
+    <>
+      <Button sx={{ m: 2 }} onClick={() => getData()}>
+        Refresh
+      </Button>
+      <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>{items}</List>
+    </>
+  );
 }
 
 export default function HistoryPage() {
