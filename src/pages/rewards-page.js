@@ -68,15 +68,15 @@ function RewardView() {
   return (
     <>
       <Button sx={{ m: 2 }} onClick={() => getData()}>
-        Refresh
+        Aktualisieren
       </Button>
       <Box sx={{ display: "flex", justifyContent: "center" }}>
         <Stack>
           <Typography variant="h5" sx={{ marginTop: 2 }}>
-            Your current score: {history}
+            Deine aktuellen Punkte: {history}
           </Typography>
           <Typography variant="h5" sx={{ marginTop: 4 }}>
-            Possible rewards
+            Mögliche Belohnungen
           </Typography>
         </Stack>
       </Box>

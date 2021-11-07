@@ -36,14 +36,17 @@ export default function Layout({ children }) {
             <BottomNavigationAction value="/scan" label="Scan" icon={<CameraAltIcon />} to="/scan" component={Link} />
             <BottomNavigationAction
               value="/history"
-              label="History"
+              //History
+              label="Huntverlauf"
               icon={<HistoryIcon />}
               to="/history"
               component={Link}
             />
             <BottomNavigationAction
               value="/rewards"
-              label="Reward"
+              //Reward
+              label="Belohnungen"
+              
               icon={<RedeemIcon />}
               to="/rewards"
               component={Link}

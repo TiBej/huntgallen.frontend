@@ -1,45 +1,25 @@
-import { useRef, useEffect, useState } from "react";
+import { useState } from "react";
 import Layout from "components/layout";
+<<<<<<< HEAD
 import mapboxgl from "!mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
 import {Marker} from 'mapbox-gl';
 import AccessibilityNewIcon from '@mui/icons-material/AccessibilityNew';
+=======
+import ReactMapGL, { Marker } from "react-map-gl";
+import RoomIcon from "@mui/icons-material/Room";
+>>>>>>> ee1ad70ed27b3640a62fb1fd2ec7688f2b1161ca
 
-mapboxgl.accessToken = "pk.eyJ1IjoiZm5vYWgiLCJhIjoiY2s0cm5hbjB3MGUycDNsbzFvYnB1MDU3cyJ9.mU44vMHiHugetxWfbqR1cg";
+const accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
 
 export default function MapPage() {
+<<<<<<< HEAD
   const mapContainer = useRef(null);
   const map = useRef(null);
   const [lng, setLng] = useState(9.3748);
   const [lat, setLat] = useState(47.423);
   const [zoom, setZoom] = useState(12);
 
-  const geojson = {
-    type: "FeatureCollection",
-    features: [
-      {
-        type: "Feature",
-        geometry: {
-          type: "Point",
-          coordinates: [47.423, 9.3748],
-        },
-        properties: {
-          title: "Mapbox",
-          description: "Washington, D.C.",
-        },
-      },
-      {
-        type: "Feature",
-        geometry: {
-          type: "Point",
-          coordinates: [-122.414, 37.776],
-        },
-        properties: {
-          title: "Mapbox",
-          description: "San Francisco, California",
-        },
-      },
-    ],
-  };
+ 
 
   useEffect(() => {
     if (map.current) return; // initialize map only once
@@ -49,39 +29,37 @@ export default function MapPage() {
       center: [lng, lat],
       zoom: zoom,
     });
+=======
+  const [viewport, setViewport] = useState({
+    latitude: 47.4245,
+    longitude: 9.3767,
+    zoom: 8,
+>>>>>>> ee1ad70ed27b3640a62fb1fd2ec7688f2b1161ca
   });
 
-  useEffect(() => {
-    if (!map.current) return; // wait for map to initialize
-    map.current.on("move", () => {
-      setLng(map.current.getCenter().lng.toFixed(4));
-      setLat(map.current.getCenter().lat.toFixed(4));
-      setZoom(map.current.getZoom().toFixed(2));
-    });
-  });
-
-  // useEffect(() => {
-  //   if (!map.current) return; // wait for map to initialize
-  //   for (const feature of geojson.features) {
-  //     // create a HTML element for each feature
-  //     const el = document.createElement("div");
-  //     el.className = "marker";
-
-  //     // make a marker for each feature and add it to the map
-  //     new mapboxgl.Marker(el)
-  //       .setLngLat(feature.geometry.coordinates)
-  //       .setPopup(
-  //         new mapboxgl.Popup({ offset: 25 }) // add popups
-  //           .setHTML(`<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`)
-  //       )
-  //       .addTo(map);
-  //   }
-  // });
+  const onViewportChange = (viewport) => {
+    const { width, height, ...rest } = viewport;
+    setViewport(rest);
+  };
 
   return (
     <Layout>
+<<<<<<< HEAD
       <div ref={mapContainer} className="map-container" />
       
+=======
+      <ReactMapGL
+        {...viewport}
+        width="100%"
+        height="80vh"
+        mapboxApiAccessToken={accessToken}
+        onViewportChange={onViewportChange}
+      >
+        <Marker latitude={47.4245} longitude={9.3767} offsetLeft={-20} offsetTop={-10}>
+          <RoomIcon style={{ fill: "green" }} />
+        </Marker>
+      </ReactMapGL>
+>>>>>>> ee1ad70ed27b3640a62fb1fd2ec7688f2b1161ca
     </Layout>
   );
 }

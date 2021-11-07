@@ -13,7 +13,9 @@ export default function LoginButton() {
         })
       }
     >
-      Log Out
+      Abmelden
+
     </Button>
+     //Log Out
   );
 }

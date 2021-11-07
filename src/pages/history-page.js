@@ -44,7 +44,7 @@ function HistoryList() {
           </Avatar>
         </ListItemAvatar>
         <ListItemText
-          primary={item.qrDesription + " - Points: " + item.points}
+          primary={item.qrDesription + " - Punkte: " + item.points}
           secondary={formatRelative(new Date(item.timeStamp), new Date())}
         />
       </ListItem>

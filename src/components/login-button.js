@@ -4,8 +4,9 @@ import Button from "@mui/material/Button";
 export default function LoginButton() {
   const { loginWithRedirect } = useAuth0();
   return (
+    //Log in
     <Button variant="secondary" onClick={() => loginWithRedirect()}>
-      Log In
+        Anmelden     
     </Button>
   );
 }
