@@ -31,7 +31,7 @@ export default function Layout({ children }) {
       </Box>
       {children}
       <Box sx={{ pb: 7 }} ref={ref}>
-        <Paper sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }} elevation={3}>
+        <Paper sx={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 1 }} elevation={3}>
           <BottomNavigation showLabels value={pathname}>
             <BottomNavigationAction value="/scan" label="Scan" icon={<CameraAltIcon />} to="/scan" component={Link} />
             <BottomNavigationAction

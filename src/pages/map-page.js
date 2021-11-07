@@ -1,15 +1,17 @@
 import { useRef, useEffect, useState } from "react";
 import Layout from "components/layout";
 import mapboxgl from "!mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
+import {Marker} from 'mapbox-gl';
+import AccessibilityNewIcon from '@mui/icons-material/AccessibilityNew';
 
 mapboxgl.accessToken = "pk.eyJ1IjoiZm5vYWgiLCJhIjoiY2s0cm5hbjB3MGUycDNsbzFvYnB1MDU3cyJ9.mU44vMHiHugetxWfbqR1cg";
 
 export default function MapPage() {
   const mapContainer = useRef(null);
   const map = useRef(null);
-  const [lng, setLng] = useState(-70.9);
-  const [lat, setLat] = useState(42.35);
-  const [zoom, setZoom] = useState(9);
+  const [lng, setLng] = useState(9.3748);
+  const [lat, setLat] = useState(47.423);
+  const [zoom, setZoom] = useState(12);
 
   const geojson = {
     type: "FeatureCollection",
@@ -18,7 +20,7 @@ export default function MapPage() {
         type: "Feature",
         geometry: {
           type: "Point",
-          coordinates: [-77.032, 38.913],
+          coordinates: [47.423, 9.3748],
         },
         properties: {
           title: "Mapbox",
@@ -79,6 +81,7 @@ export default function MapPage() {
   return (
     <Layout>
       <div ref={mapContainer} className="map-container" />
+      
     </Layout>
   );
 }
